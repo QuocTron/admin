@@ -1,0 +1,120 @@
+.header {
+    position: fixed;
+    box-shadow: var(--chakra-shadows-none);
+    background: center center / cover rgba(244, 247, 254, 0.2);
+    border-color: var(--chakra-colors-transparent);
+    filter: none;
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border-width: 1.5px;
+    border-style: solid;
+    transition-delay: 0s, 0s, 0s, 0s;
+    transition-duration: 0.25s, 0.25s, 0.25s, 0s;
+    transition-timing-function: linear, linear, linear, linear;
+    display: flex;
+    min-height: 75px;
+    line-height: 25.6px;
+    margin-inline: auto;
+    margin-top: 0px;
+    padding-bottom: 8px;
+    right: 30px;
+    padding-top: 8px;
+    top: 25px;
+    width: calc(100vw - 18.4%);
+    padding: 10px 10px;
+    height: 82px;
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .box-title {
+            display: flex;
+            flex-direction: column;
+            .title-name-page {
+                color: var(--chakra-colors-gray-800);
+                height: 10px;
+                font-size: 14px;
+            }
+            .title-page {
+                color: var(--chakra-colors-gray-700);
+                font-size: 34px;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+                line-height: 25px;
+            }
+        }
+        .header-box-search {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 10px;
+            color: var(--chakra-colors-gray-800);
+            line-height: 25px;
+            letter-spacing: -0.5px;
+            width: 354px;
+            .search {
+                display: flex;
+                background-color: var(--chakra-colors-secondaryGray-300);
+                width: 200px;
+                height: 40px;
+                color: var( --chakra-colors-gray-700);
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 25px;
+                border-radius: 30px;
+                margin-right: 10px;
+                .box-btn-search {
+                    display: flex;
+                    align-items: center;
+                    background-color: var(--chakra-colors-secondaryGray-300);
+                    justify-content: center;
+                    font-weight: 100;
+                    color: var(--chakra-colors-gray-800);
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;
+                    .btn-search {
+                        background-color: var(--chakra-colors-secondaryGray-300);
+                        color: var(--chakra-colors-gray-700);
+                        font-size: 12px;
+                        font-weight: 100;
+                    }
+                }
+                .input-search {
+                    background-color: var(--chakra-colors-secondaryGray-300);
+                    color: var(--chakra-colors-gray-700);
+                    font-size: 14px;
+                    font-weight: 500;
+                    border-radius: 30px;
+                    margin-right: 5px;
+                }
+            }
+            .header-menu {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                .btn-menu {
+                    color: var(--chakra-colors-gray-400);
+                    background-color: white;
+                }
+                .btn-dark-light {
+                    transform: rotateX(-336deg);
+                }
+                .box-avatar {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: aqua;
+                    .avatar {
+                        width: 100%;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

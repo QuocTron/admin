@@ -1,0 +1,15 @@
+.wrapper {
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        .header-content {
+            position: relative;
+            flex: 5.9;
+            .container {
+                background-color: var(--chakra-colors-gray-200);
+                padding: 150px 10px;
+                height: 2000px;
+            }
+        }
+    }
+}

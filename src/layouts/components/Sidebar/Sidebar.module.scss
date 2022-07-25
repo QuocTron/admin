@@ -1,0 +1,52 @@
+.sidebar {
+    flex: 1.1;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 30px;
+    color: #1a202c;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: -0.5px;
+    line-height: 24px;
+    padding: 25px 0px 0px;
+    .title-sidebar {
+        padding: 38px 40px;
+        color: var(--chakra-colors-gray-800);
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        border-bottom: 1px solid var(--chakra-colors-gray-300);
+    }
+    .sidebar-nav {
+        margin-top: 10px;
+        padding: 10px 10px 10px 15px;
+        .sidebar-ul {
+            list-style: none;
+            .item-nav {
+                margin: 10px;
+                padding: 5px;
+                width: 100%;
+                .link-item {
+                    color: var(--chakra-colors-gray-300);
+                    font-weight: 500;
+                    .icon {
+                        margin-right: 20px;
+                    }
+                }
+            }
+            .item-nav.clicked {
+                border-right: 3px solid var(--chakra-colors-purple-600);
+                .link-item {
+                    color: var(--chakra-colors-gray-800);
+                    .icon {
+                        color: var(--chakra-colors-purple-600);
+                    }
+                }
+            }
+        }
+    }
+}
