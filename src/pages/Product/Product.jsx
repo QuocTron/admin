@@ -11,11 +11,15 @@ import TableRow from "@mui/material/TableRow";
 import { data } from "../../dummyData";
 import classnames from "classnames/bind";
 import styles from "./Product.module.scss";
+import { accordionClasses } from "@mui/material";
+import PopUpProduct from "./PopUpProduct";
 const cx = classnames.bind(styles);
 
 const columns = [
   { id: "name", label: "Tên sản phẩm", minWidth: 170 },
+  { id: "category", label: "Danh mục", minWidth: 170 },
   { id: "title", label: "Tiêu đề", minWidth: 100 },
+  { id: "image", label: "Hình ảnh", minWidth: 100 },
   {
     id: "price",
     label: "Giá",
@@ -31,28 +35,18 @@ const columns = [
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "density",
-    label: "Density",
+    id: "amount",
+    label: "Số lượng",
     minWidth: 170,
     align: "right",
     format: (value) => value.toFixed(2),
   },
 ];
 const Product = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [amount, setAmount] = useState(() =>
-    data.reduce(
-      (clothes) =>
-        clothes?.detail?.reduce(
-          (item) =>
-            item.detailColor?.reduce((itemColor) => itemColor.amount, 0),
-          0
-        ),
-      0
-    )
-  );
-  console.log(amount);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [openPopup, setOpenPopupProduct] = useState(false);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -74,7 +68,12 @@ const Product = () => {
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth }}
+                    style={{
+                      minWidth: column.minWidth,
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
                   >
                     {column.label}
                   </TableCell>
@@ -91,8 +90,63 @@ const Product = () => {
                       role="checkbox"
                       tabIndex={-1}
                       key={row.code}
+                      onClick={() => setOpenPopupProduct(true)}
                     >
-                      {columns.map((column) => {
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.name}
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.category?.name}
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.title}
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px" }}
+                        className="tableCell"
+                      >
+                        <img
+                          style={{ width: "100px", height: "100px" }}
+                          src={row?.images[0]?.img}
+                          alt={row?.name}
+                        />
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.price.toLocaleString("vn-VN")} VNĐ
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.discount}
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "12px", textAlign: "center" }}
+                        className="tableCell"
+                      >
+                        {row?.detail.reduce((acc, detail) => {
+                          acc += detail.detailColor.reduce(
+                            (accAmount, detailColor) =>
+                              (accAmount += detailColor.amount),
+                            0
+                          );
+                          return acc;
+                        }, 0)}
+                      </TableCell>
+
+                      {/* {columns.map((column) => {
                         const value = row[column.id];
                         return (
                           <TableCell key={column.id} align={column.align}>
@@ -101,7 +155,7 @@ const Product = () => {
                               : value}
                           </TableCell>
                         );
-                      })}
+                      })} */}
                     </TableRow>
                   );
                 })}
@@ -118,6 +172,10 @@ const Product = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <PopUpProduct
+        setOpenPopupProduct={setOpenPopupProduct}
+        openPopup={openPopup}
+      />
     </div>
   );
 };

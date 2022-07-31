@@ -9,7 +9,7 @@ const publicRouters = [
     { path: config.routes.home, component: Home },
     { path: config.routes.product, component: Product },
     { path: config.routes.orders, component: Customer },
-    { path: config.routes.login, component: Login },
+    { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.profile, component: Register },
 ];
 
